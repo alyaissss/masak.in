@@ -25,7 +25,7 @@ class DatabaseSeeder extends Seeder
 
         // ── Pengguna ──────────────────────────────────────────────
         $admin = User::create([
-            'nama' => 'Rina Kartika',
+            'nama' => 'Admin Masak.In',
             'email' => 'admin@masak.id',
             'password' => 'masak123',
             'role' => User::ROLE_ADMIN,

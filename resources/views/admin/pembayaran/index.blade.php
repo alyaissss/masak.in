@@ -37,7 +37,7 @@
                         <th>Kelas</th>
                         <th>Jumlah</th>
                         <th>Metode</th>
-                        <th>No. Referensi</th>
+                        <th>Nama Pengirim</th>
                         <th>Bukti</th>
                         <th>Status</th>
                         <th style="text-align: right;">Aksi</th>

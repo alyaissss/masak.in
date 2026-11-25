@@ -13,6 +13,7 @@
 <body>
 @php
     $user = auth()->user();
+    $namaTampilan = $user->isAdmin() ? 'Admin Masak.In' : $user->nama;
     $hariIni = now()->translatedFormat('l, d F Y');
 
     $menu = match (true) {
@@ -65,7 +66,7 @@
             <div class="pengguna">
                 <span class="avatar"><x-ikon nama="profil" /></span>
                 <span>
-                    <span class="nama">{{ $user->nama }}</span><br>
+                    <span class="nama">{{ $namaTampilan }}</span><br>
                     <span class="email">{{ $user->email }}</span>
                 </span>
             </div>
@@ -92,7 +93,7 @@
             </div>
             <div class="kanan">
                 <span class="chip-tanggal"><x-ikon nama="kalender" /> {{ $hariIni }}</span>
-                <span class="avatar" title="{{ $user->nama }}"><x-ikon nama="profil" /></span>
+                <span class="avatar" title="{{ $namaTampilan }}"><x-ikon nama="profil" /></span>
             </div>
         </header>
 

@@ -55,8 +55,7 @@
     </div>
 
     <p class="nota-catatan">
-        Nota ini merupakan ringkasan transaksi di MASAK, bukan bukti transfer bank.
-        Bukti transfer asli tetap menjadi acuan verifikasi pembayaran.
+        Transaksi pembayaran telah berhasil diproses dan dikonfirmasi.
     </p>
 
     <div class="nota-aksi no-print">

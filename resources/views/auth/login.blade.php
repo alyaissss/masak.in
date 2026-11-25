@@ -22,13 +22,12 @@
         </div>
 
         <blockquote>
-            &ldquo;Belajar memasak bukan tentang resep — ia tentang berkobar bersama.&rdquo;
+            &ldquo;Resep adalah langkah awal, keahlian menyempurnakan setiap rasa.&rdquo;
             <footer>— Akademi Kuliner MASAK</footer>
         </blockquote>
 
         <p style="font-size: 0.85rem; color: var(--warna-sekunder-muda); max-width: 420px;">
-            Kelas memasak daring bersama chef profesional: resep lengkap, jadwal sesi live,
-            dan forum diskusi — semuanya dalam satu ruang belajar.
+            Program kelas memasak online bersama chef profesional yang mengintegrasikan resep, jadwal sesi online, dan forum diskusi dalam satu platform.
         </p>
     </section>
 
