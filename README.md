@@ -3,9 +3,9 @@
 ## Tim Pengembang (Kelompok 5)
 
 Proyek ini dikembangkan untuk memenuhi tugas mata kuliah Rekayasa Perangkat Lunak Universitas Indraprasta PGRI:
-Cantik Alya Isnaeni (202343501574)
-Marsya Nur Afni (202343501545)
-Shabita Devanya (202343501571)
+* Cantik Alya Isnaeni (202343501574)
+* Marsya Nur Afni (202343501545)
+* Shabita Devanya (202343501571)
 
 Aplikasi berbasis web untuk pengelolaan dan pelaksanaan kelas memasak daring secara terpusat. Platform ini menghubungkan **Admin**, **Chef**, dan **Learner** dalam satu ekosistem pembelajaran—mulai dari manajemen kelas, penyusunan menu dan resep, penjadwalan sesi *video conference*, konfirmasi pembayaran, hingga forum diskusi interaktif.
 
