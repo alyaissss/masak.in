@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('judul', 'Dashboard Siswa')
+@section('judul', 'Dashboard Learner')
 @section('sub-judul')
     <p class="sub-judul">Kelas yang Anda ikuti, jadwal mendatang, dan rekomendasi kelas baru.</p>
 @endsection

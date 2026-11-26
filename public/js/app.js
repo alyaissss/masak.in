@@ -1,19 +1,6 @@
 (function () {
     "use strict";
 
-    // Drawer sidebar (mobile)
-    var shell = document.querySelector(".app-shell");
-    document.querySelectorAll("[data-drawer]").forEach(function (btn) {
-        btn.addEventListener("click", function () {
-            if (shell) shell.classList.toggle("sidebar-terbuka");
-        });
-    });
-    document.querySelectorAll(".sidebar-overlay").forEach(function (ov) {
-        ov.addEventListener("click", function () {
-            if (shell) shell.classList.remove("sidebar-terbuka");
-        });
-    });
-
     // Toast flash otomatis menghilang
     document.querySelectorAll("[data-autohide]").forEach(function (el) {
         setTimeout(function () {

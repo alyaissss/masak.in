@@ -18,21 +18,21 @@
 
     $menu = match (true) {
         $user->isAdmin() => [
-            ['url' => route('admin.dashboard'), 'label' => 'Dashboard', 'ikon' => 'dasbor', 'is' => ['admin', 'admin/dashboard']],
-            ['url' => route('admin.chef.index'), 'label' => 'Data Chef', 'ikon' => 'chef', 'is' => ['admin/chef*']],
-            ['url' => route('admin.learner.index'), 'label' => 'Data Learner', 'ikon' => 'pengguna', 'is' => ['admin/learner*']],
-            ['url' => route('admin.kelas.index'), 'label' => 'Data Kelas', 'ikon' => 'kelas', 'is' => ['admin/kelas*']],
-            ['url' => route('admin.pembayaran.index'), 'label' => 'Pembayaran', 'ikon' => 'dompet', 'is' => ['admin/pembayaran*']],
+            ['url' => route('admin.dashboard'), 'label' => 'Dashboard', 'singkat' => 'Beranda', 'ikon' => 'dasbor', 'is' => ['admin', 'admin/dashboard']],
+            ['url' => route('admin.chef.index'), 'label' => 'Data Chef', 'singkat' => 'Chef', 'ikon' => 'chef', 'is' => ['admin/chef*']],
+            ['url' => route('admin.learner.index'), 'label' => 'Data Learner', 'singkat' => 'Learner', 'ikon' => 'pengguna', 'is' => ['admin/learner*']],
+            ['url' => route('admin.kelas.index'), 'label' => 'Data Kelas', 'singkat' => 'Kelas', 'ikon' => 'kelas', 'is' => ['admin/kelas*']],
+            ['url' => route('admin.pembayaran.index'), 'label' => 'Pembayaran', 'singkat' => 'Bayar', 'ikon' => 'dompet', 'is' => ['admin/pembayaran*']],
         ],
         $user->isChef() => [
-            ['url' => route('chef.dashboard'), 'label' => 'Dashboard', 'ikon' => 'dasbor', 'is' => ['chef', 'chef/dashboard']],
-            ['url' => route('chef.kelas.index'), 'label' => 'Kelas Saya', 'ikon' => 'kelas', 'is' => ['chef/kelas*']],
-            ['url' => route('chef.diskusi.index'), 'label' => 'Forum Diskusi', 'ikon' => 'obrolan', 'is' => ['chef/diskusi*']],
+            ['url' => route('chef.dashboard'), 'label' => 'Dashboard', 'singkat' => 'Beranda', 'ikon' => 'dasbor', 'is' => ['chef', 'chef/dashboard']],
+            ['url' => route('chef.kelas.index'), 'label' => 'Kelas Saya', 'singkat' => 'Kelas', 'ikon' => 'kelas', 'is' => ['chef/kelas*']],
+            ['url' => route('chef.diskusi.index'), 'label' => 'Forum Diskusi', 'singkat' => 'Diskusi', 'ikon' => 'obrolan', 'is' => ['chef/diskusi*']],
         ],
         default => [
-            ['url' => route('learner.dashboard'), 'label' => 'Dashboard', 'ikon' => 'dasbor', 'is' => ['learner', 'learner/dashboard']],
-            ['url' => route('kelas.index'), 'label' => 'Katalog Kelas', 'ikon' => 'menu', 'is' => ['kelas', 'kelas/*']],
-            ['url' => route('learner.pembayaran.index'), 'label' => 'Pembayaran Saya', 'ikon' => 'dompet', 'is' => ['learner/pembayaran*']],
+            ['url' => route('learner.dashboard'), 'label' => 'Dashboard', 'singkat' => 'Beranda', 'ikon' => 'dasbor', 'is' => ['learner', 'learner/dashboard']],
+            ['url' => route('kelas.index'), 'label' => 'Katalog Kelas', 'singkat' => 'Kelas', 'ikon' => 'menu', 'is' => ['kelas', 'kelas/*', 'kelas-saya*']],
+            ['url' => route('learner.pembayaran.index'), 'label' => 'Pembayaran Saya', 'singkat' => 'Bayar', 'ikon' => 'dompet', 'is' => ['learner/pembayaran*']],
         ],
     };
 
@@ -80,13 +80,23 @@
         </div>
     </aside>
 
-    <button class="sidebar-overlay" data-drawer aria-label="Tutup menu"></button>
+    <nav class="navigasi-mobile" aria-label="Navigasi utama" data-testid="mobile-navigation">
+        @foreach ($menu as $item)
+            @php($aktif = request()->is(...$item['is']))
+            <a href="{{ $item['url'] }}"
+               class="{{ $aktif ? 'aktif' : '' }}"
+               aria-label="{{ $item['label'] }}"
+               title="{{ $item['label'] }}"
+               @if ($aktif) aria-current="page" @endif
+               data-testid="mobile-nav-{{ \Illuminate\Support\Str::slug($item['label']) }}">
+                <x-ikon nama="{{ $item['ikon'] }}" />
+                <span>{{ $item['singkat'] }}</span>
+            </a>
+        @endforeach
+    </nav>
 
     <div class="konten-utama">
         <header class="atas">
-            <button class="btn btn-sekunder btn-sm tombol-drawer" data-drawer aria-label="Buka menu" data-testid="open-drawer-button">
-                <x-ikon nama="dasbor" />
-            </button>
             <div class="judul-wrap">
                 <h1 class="judul-halaman">@yield('judul')</h1>
                 @yield('sub-judul')
@@ -94,6 +104,12 @@
             <div class="kanan">
                 <span class="chip-tanggal"><x-ikon nama="kalender" /> {{ $hariIni }}</span>
                 <span class="avatar" title="{{ $namaTampilan }}"><x-ikon nama="profil" /></span>
+                <form class="keluar-mobile" method="POST" action="{{ route('logout') }}">
+                    @csrf
+                    <button type="submit" class="btn btn-sekunder" aria-label="Keluar" title="Keluar" data-testid="mobile-logout-button">
+                        <x-ikon nama="keluar" />
+                    </button>
+                </form>
             </div>
         </header>
 

@@ -31,6 +31,18 @@ php artisan storage:link       # agar bukti transfer & foto menu tampil
 php artisan serve              # http://localhost:8000
 ```
 
+## Menjalankan Tes
+
+Tes otomatis menggunakan database MySQL khusus `masak_test` agar tidak menghapus
+data aplikasi. Buat database tersebut satu kali sebelum
+menjalankan tes:
+
+```sql
+CREATE DATABASE masak_test;
+```
+
+Kemudian jalankan `php artisan test`.
+
 > Bawaan `.env.example` memakai **MySQL** (sesuai SRS). Untuk demo cepat tanpa MySQL,
 > ganti `DB_CONNECTION=sqlite` lalu `touch database/database.sqlite`. Hapus
 > `DB_HOST`…`DB_PASSWORD`.
